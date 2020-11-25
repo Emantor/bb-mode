@@ -34,6 +34,19 @@
 ;;
 
 ;;; Code:
+(defvar bb-expr-white-space-regexp nil)
+(defvar bb-function-name-opt-regexp nil)
+(defvar bb-function-name-regexp nil)
+(defvar bb-function-paren-regexp nil)
+(defvar bb-function-decl-regexp nil)
+(defvar bb-function-decl-opt-regexp nil)
+(defvar bb-variable-regexp nil)
+(defvar bb-variable-assignment-regexp nil)
+(defvar bb-variable-deref-regexp nil)
+(defvar bb-addtask-regexp nil)
+(defvar bb-keywords-regexp nil)
+(defvar bb-base-function-decl-regexp nil)
+(defvar bb-font-lock nil)
 
 (defun bb-comment-dwim (arg)
   "Comment or uncomment current line or region.
@@ -193,19 +206,6 @@ For detail, see `comment-dwim'."
   (setq font-lock-defaults '((bb-font-lock)))
   (define-key bb-mode-map [remap comment-dwim] 'bb-comment-dwim)
   
-  (setq bb-expr-white-space-regexp nil)
-  (setq bb-function-name-opt-regexp nil)
-  (setq bb-function-name-regexp nil)
-  (setq bb-function-paren-regexp nil)
-  (setq bb-function-decl-regexp nil)
-  (setq bb-function-decl-opt-regexp nil)
-  (setq bb-variable-regexp nil)
-  (setq bb-variable-assignment-regexp nil)
-  (setq bb-variable-deref-regexp nil)
-  (setq bb-addtask-regexp nil)
-  (setq bb-keywords-regexp nil)
-  (setq bb-base-function-decl-regexp nil)
-
   )
 
 (provide 'bb-mode)
