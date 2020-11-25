@@ -50,11 +50,11 @@ For detail, see `comment-dwim'."
 (setq bb-function-name-regexp "\\([a-zA-Z0-9_-]+\\)")
 (setq bb-function-paren-regexp "([ \t]*)")
 (setq bb-function-decl-regexp (concat bb-function-name-regexp
-                                      bb-expr-white-space-regexp
-                                      bb-function-paren-regexp))
+				      bb-expr-white-space-regexp
+				      bb-function-paren-regexp))
 (setq bb-function-decl-opt-regexp (concat bb-function-name-opt-regexp
-                                          bb-expr-white-space-regexp
-                                          bb-function-paren-regexp))
+					  bb-expr-white-space-regexp
+					  bb-function-paren-regexp))
 (setq bb-variable-regexp "\\([]\[a-zA-Z0-9\-_\/\${}]+\\)")
 (setq bb-variable-assignment-regexp
       (regexp-opt '("=" ":=" "?=" ".=" "??=" "+=" "=+" "=.")))
@@ -62,128 +62,128 @@ For detail, see `comment-dwim'."
 (setq bb-addtask-regexp (regexp-opt '("before" "after") 'words))
 (setq bb-keywords-regexp
       (concat "^"
-              (regexp-opt '("inherit"
-                            "include"
-                            "require"
-                            "EXPORT_FUNCTIONS"
-                            "addhandler") 'words)
-              ))
+	      (regexp-opt '("inherit"
+			    "include"
+			    "require"
+			    "EXPORT_FUNCTIONS"
+			    "addhandler") 'words)
+	      ))
 (setq bb-base-function-decl-regexp
       (concat "^"
-              (regexp-opt '("do_setscene"
-                            "do_fetch"
-                            "do_unpack"
-                            "do_patch"
-                            "do_configure"
-                            "do_compile"
-                            "do_install"
-                            "do_populate_sysroot"
-                            "do_package") 'words)
-              ))
+	      (regexp-opt '("do_setscene"
+			    "do_fetch"
+			    "do_unpack"
+			    "do_patch"
+			    "do_configure"
+			    "do_compile"
+			    "do_install"
+			    "do_populate_sysroot"
+			    "do_package") 'words)
+	      ))
 
 (setq bb-font-lock
       `(
-        ;; keywords
-        (,bb-keywords-regexp 0 font-lock-keyword-face)
+	;; keywords
+	(,bb-keywords-regexp 0 font-lock-keyword-face)
 
-        ;; addtask 3rd form: addtask FUNCTION_NAME (after|before) FUNCTION_NAME (after|before) FUNCTION_NAME
-        (,(concat "^"
-                  "\\(addtask\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  "[ \t]+"
-                  "\\(before\\|after\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  "[ \t]+"
-                  "\\(before\\|after\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  )
-         (1 font-lock-keyword-face)
-         (2 font-lock-function-name-face)
-         (3 font-lock-keyword-face)
-         (4 font-lock-function-name-face)
-         (5 font-lock-keyword-face)
-         (6 font-lock-function-name-face)
-         )
+	;; addtask 3rd form: addtask FUNCTION_NAME (after|before) FUNCTION_NAME (after|before) FUNCTION_NAME
+	(,(concat "^"
+		  "\\(addtask\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  "[ \t]+"
+		  "\\(before\\|after\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  "[ \t]+"
+		  "\\(before\\|after\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  )
+	 (1 font-lock-keyword-face)
+	 (2 font-lock-function-name-face)
+	 (3 font-lock-keyword-face)
+	 (4 font-lock-function-name-face)
+	 (5 font-lock-keyword-face)
+	 (6 font-lock-function-name-face)
+	 )
         
-        ;; addtask 2nd form: addtask FUNCTION_NAME (after|before) FUNCTION_NAME
-        (,(concat "^"
-                  "\\(addtask\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  "[ \t]+"
-                  "\\(before\\|after\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  )
-         (1 font-lock-keyword-face)
-         (2 font-lock-function-name-face)
-         (3 font-lock-keyword-face)
-         (4 font-lock-function-name-face)
-         )
+	;; addtask 2nd form: addtask FUNCTION_NAME (after|before) FUNCTION_NAME
+	(,(concat "^"
+		  "\\(addtask\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  "[ \t]+"
+		  "\\(before\\|after\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  )
+	 (1 font-lock-keyword-face)
+	 (2 font-lock-function-name-face)
+	 (3 font-lock-keyword-face)
+	 (4 font-lock-function-name-face)
+	 )
 
-        ;; addtask 1st form: addtask FUNCTION_NAME
-        (,(concat "^"
-                  "\\(addtask\\)"
-                  "[ \t]+"
-                  bb-function-name-regexp
-                  )
-         (1 font-lock-keyword-face)
-         (2 font-lock-function-name-face)
-         )
+	;; addtask 1st form: addtask FUNCTION_NAME
+	(,(concat "^"
+		  "\\(addtask\\)"
+		  "[ \t]+"
+		  bb-function-name-regexp
+		  )
+	 (1 font-lock-keyword-face)
+	 (2 font-lock-function-name-face)
+	 )
 
-        ;; python function
-        (,(concat "^"
-                  "\\(python\\)"
-                  "[ \t]+"
-                  bb-function-decl-opt-regexp)
-         (1 font-lock-keyword-face)
-         (2 font-lock-function-name-face)
-         )
+	;; python function
+	(,(concat "^"
+		  "\\(python\\)"
+		  "[ \t]+"
+		  bb-function-decl-opt-regexp)
+	 (1 font-lock-keyword-face)
+	 (2 font-lock-function-name-face)
+	 )
 
-        ;; built-in/basic "do_" routines
-        (,(concat bb-base-function-decl-regexp
-                  "[ \t]*"
-                  bb-function-paren-regexp)
-         (1 font-lock-builtin-face)
-         )
+	;; built-in/basic "do_" routines
+	(,(concat bb-base-function-decl-regexp
+		  "[ \t]*"
+		  bb-function-paren-regexp)
+	 (1 font-lock-builtin-face)
+	 )
 
-        ;; shell script function
-        (,(concat "^"
-                  bb-function-decl-regexp)
-         1 font-lock-function-name-face)
+	;; shell script function
+	(,(concat "^"
+		  bb-function-decl-regexp)
+	 1 font-lock-function-name-face)
 
-        ;; export variable
-        (,(concat "^\\(export\\)"
-                  "[ \t]+"
-                  bb-variable-regexp
-                  "[ \t]*"
-                  bb-variable-assignment-regexp)
-         (1 font-lock-keyword-face)
-         (2 font-lock-variable-name-face))
+	;; export variable
+	(,(concat "^\\(export\\)"
+		  "[ \t]+"
+		  bb-variable-regexp
+		  "[ \t]*"
+		  bb-variable-assignment-regexp)
+	 (1 font-lock-keyword-face)
+	 (2 font-lock-variable-name-face))
 
-        ;; variable
-        (,(concat "^"
-                  bb-variable-regexp
-                  "[ \t]*"
-                  bb-variable-assignment-regexp)
-         (1 font-lock-variable-name-face))
+	;; variable
+	(,(concat "^"
+		  bb-variable-regexp
+		  "[ \t]*"
+		  bb-variable-assignment-regexp)
+	 (1 font-lock-variable-name-face))
 
-        (,bb-variable-deref-regexp 0 font-lock-variable-name-face)
-        )
+	(,bb-variable-deref-regexp 0 font-lock-variable-name-face)
+	)
       )
 
 (defvar bb-syntax-table nil "Syntax table for `bb-mode'.")
 (setq bb-syntax-table
       (let ((synTable (make-syntax-table)))
 
-        ;; bash style comment: "# ..."
-        (modify-syntax-entry ?# "< b" synTable)
-        (modify-syntax-entry ?\n "> b" synTable)
+	;; bash style comment: "# ..."
+	(modify-syntax-entry ?# "< b" synTable)
+	(modify-syntax-entry ?\n "> b" synTable)
 
-        synTable))
+	synTable))
 
 (define-derived-mode bb-mode fundamental-mode
   "bb"
