@@ -33,14 +33,16 @@
 ;;                 auto-mode-alist)))
 ;;
 
+;;; Code:
+
 (defun bb-comment-dwim (arg)
   "Comment or uncomment current line or region.
 For detail, see `comment-dwim'."
   (interactive "*P")
   (require 'newcomment)
   (let (
-        (comment-start "#") (comment-end "")
-        )
+	(comment-start "#") (comment-end "")
+	)
     (comment-dwim arg)))
 
 (setq bb-expr-white-space-regexp "[ \t]*")
@@ -207,3 +209,4 @@ For detail, see `comment-dwim'."
   )
 
 (provide 'bb-mode)
+;;; bb-mode.el ends here
