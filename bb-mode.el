@@ -56,8 +56,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
   (interactive "*P")
   (require 'newcomment)
   (let (
-	(comment-start "#") (comment-end "")
-	)
+	(comment-start "#") (comment-end ""))
     (comment-dwim arg)))
 
 (setq bb-expr-white-space-regexp "[ \t]*")
@@ -81,8 +80,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 			    "include"
 			    "require"
 			    "EXPORT_FUNCTIONS"
-			    "addhandler") 'words)
-	      ))
+			    "addhandler") 'words)))
 (setq bb-base-function-decl-regexp
       (concat "^"
 	      (regexp-opt '("do_setscene"
@@ -93,8 +91,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 			    "do_compile"
 			    "do_install"
 			    "do_populate_sysroot"
-			    "do_package") 'words)
-	      ))
+			    "do_package") 'words)))
 
 (setq bb-font-lock
       `(
@@ -113,15 +110,13 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 		  "[ \t]+"
 		  "\\(before\\|after\\)"
 		  "[ \t]+"
-		  bb-function-name-regexp
-		  )
+		  bb-function-name-regexp)
 	 (1 font-lock-keyword-face)
 	 (2 font-lock-function-name-face)
 	 (3 font-lock-keyword-face)
 	 (4 font-lock-function-name-face)
 	 (5 font-lock-keyword-face)
-	 (6 font-lock-function-name-face)
-	 )
+	 (6 font-lock-function-name-face))
         
 	;; addtask 2nd form: addtask FUNCTION_NAME (after|before) FUNCTION_NAME
 	(,(concat "^"
@@ -131,23 +126,19 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 		  "[ \t]+"
 		  "\\(before\\|after\\)"
 		  "[ \t]+"
-		  bb-function-name-regexp
-		  )
+		  bb-function-name-regexp)
 	 (1 font-lock-keyword-face)
 	 (2 font-lock-function-name-face)
 	 (3 font-lock-keyword-face)
-	 (4 font-lock-function-name-face)
-	 )
+	 (4 font-lock-function-name-face))
 
 	;; addtask 1st form: addtask FUNCTION_NAME
 	(,(concat "^"
 		  "\\(addtask\\)"
 		  "[ \t]+"
-		  bb-function-name-regexp
-		  )
+		  bb-function-name-regexp)
 	 (1 font-lock-keyword-face)
-	 (2 font-lock-function-name-face)
-	 )
+	 (2 font-lock-function-name-face))
 
 	;; python function
 	(,(concat "^"
@@ -155,15 +146,13 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 		  "[ \t]+"
 		  bb-function-decl-opt-regexp)
 	 (1 font-lock-keyword-face)
-	 (2 font-lock-function-name-face)
-	 )
+	 (2 font-lock-function-name-face))
 
 	;; built-in/basic "do_" routines
 	(,(concat bb-base-function-decl-regexp
 		  "[ \t]*"
 		  bb-function-paren-regexp)
-	 (1 font-lock-builtin-face)
-	 )
+	 (1 font-lock-builtin-face))
 
 	;; shell script function
 	(,(concat "^"
@@ -186,9 +175,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 		  bb-variable-assignment-regexp)
 	 (1 font-lock-variable-name-face))
 
-	(,bb-variable-deref-regexp 0 font-lock-variable-name-face)
-	)
-      )
+	(,bb-variable-deref-regexp 0 font-lock-variable-name-face)))
 
 (defvar bb-syntax-table nil "Syntax table for `bb-mode'.")
 (setq bb-syntax-table
@@ -206,9 +193,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
   :syntax-table bb-syntax-table
   
   (setq font-lock-defaults '((bb-font-lock)))
-  (define-key bb-mode-map [remap comment-dwim] 'bb-comment-dwim)
-  
-  )
+  (define-key bb-mode-map [remap comment-dwim] 'bb-comment-dwim))
 
 (provide 'bb-mode)
 ;;; bb-mode.el ends here
