@@ -189,7 +189,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 
 (define-derived-mode bb-mode fundamental-mode
   "bb"
-  "Major mode for editing bitbake files"
+  "Major mode for editing bitbake files."
   :syntax-table bb-syntax-table
   
   (setq font-lock-defaults '((bb-font-lock)))
