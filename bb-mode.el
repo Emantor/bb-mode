@@ -187,7 +187,7 @@ For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
 
 	synTable))
 
-(define-derived-mode bb-mode fundamental-mode
+(define-derived-mode bb-mode prog-mode
   "bb"
   "Major mode for editing bitbake files."
   :syntax-table bb-syntax-table
