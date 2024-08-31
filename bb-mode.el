@@ -1,10 +1,12 @@
-;;; bb-mode.el --- major mode for editing bitbake files
+;;; bb-mode.el --- Major mode for editing bitbake files
+;;; Major mode for editing bitbake files, see https://github.com/Emantor/bb-mode.git
 
 ;; Copyright (c) 2013 Marc Ferland <marc.ferland@gmail.com>
 
 ;; Author: Marc Ferland <marc.ferland@gmail.com>
 
 ;; Keywords: languages, faces
+;; URL: https://github.com/Emantor/bb-mode.git
 ;; Last edit: 2013-03-30
 ;; Version: 1.0
 
@@ -50,7 +52,7 @@
 
 (defun bb-comment-dwim (arg)
   "Comment or uncomment current line or region.
-For detail, see `comment-dwim'."
+For detail, see `comment-dwim'. ARG is passed down to `comment-dwim'."
   (interactive "*P")
   (require 'newcomment)
   (let (
